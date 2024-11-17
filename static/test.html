@@ -1,38 +1,236 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Font Awesome Test</title>
-    <!-- Font Awesome CDN -->
-    <link 
-        rel="stylesheet" 
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
-        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
-        crossorigin="anonymous" 
-        referrerpolicy="no-referrer" 
-    />
-    <style>
-        body {
-            background-color: #fff; /* Black background */
-            color: #000; /* White text */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            flex-direction: column;
+    <meta charset="utf-8">
+    <meta name="description" content="CLIPort: What and Where Pathways for Robotic Manipulation.">
+    <meta name="keywords" content="Vision-Language Grounding, Manipulation, CLIP">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CLIPort</title>
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4Y34PZ3XBE"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+    
+        gtag('config', 'G-4Y34PZ3XBE');
+    </script>
+    
+    <script>
+        function updateSingleVideo() {
+        var demo = document.getElementById("single-menu-demos").value;
+        var task = document.getElementById("single-menu-tasks").value;
+        var inst = document.getElementById("single-menu-instances").value;
+    
+        console.log("single", demo, task, inst)
+    
+        var video = document.getElementById("single-task-result-video");
+        video.src = "https://cliport.github.io/media/results_web/" + 
+                    task + 
+                    "-two_stream_full_clip_lingunet_lat_transporter-n" + 
+                    demo + 
+                    "-train/videos/" + 
+                    task +
+                    "-0000" + 
+                    inst + 
+                    ".mp4";
+        video.playbackRate = 2.0;
+        video.play();
         }
-        .icon-test {
-            font-size: 50px;
-            margin: 20px;
+    
+        function updateMultiVideo() {
+        var demo = document.getElementById("multi-menu-demos").value;
+        var task = document.getElementById("multi-menu-tasks").value;
+        var inst = document.getElementById("multi-menu-instances").value;
+    
+        console.log("multi", demo, task, inst)
+    
+        var video = document.getElementById("multi-task-result-video");
+        video.src = "https://cliport.github.io/media/results_web/" + 
+                    task + 
+                    "-two_stream_full_clip_lingunet_lat_transporter-n" + 
+                    demo + 
+                    "-train/videos/multi-language-conditioned-" + 
+                    task +
+                    "-0000" + 
+                    inst + 
+                    ".mp4";
+        video.playbackRate = 2.0;
+        video.play();
         }
-    </style>
+    
+    </script>
+    
+    <!-- Use CDN for Bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    
+    <!-- Other CSS Links -->
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
 </head>
+
 <body>
-    <i class="fa-solid fa-user icon-test"></i>
-    <i class="fa-brands fa-github icon-test"></i>
-    <i class="fa-regular fa-file-pdf icon-test"></i>
-    <p>Test Icons</p>
+
+<section class="section">
+  <div class="container is-max-widescreen">
+
+    <h2 class="title is-3">Results</h2>
+
+    <div class="columns is-multiline">
+      <!-- Single-Task Models Column -->
+      <div class="column is-half-tablet is-full-mobile">
+        <div class="box">
+          <h3 class="title is-5">Single-Task Models</h3>
+
+          <div class="field">
+            <label class="label">Configuration</label>
+            <div class="control">
+              <div class="field has-addons">
+                <div class="control">
+                  <div class="select is-small">
+                    <select id="single-menu-demos" onchange="updateSingleVideo()">
+                      <option value="1">1</option>
+                      <option value="10">10</option>
+                      <option value="100">100</option>
+                      <option value="1000" selected="selected">1000</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="control">
+                  <div class="select is-small">
+                    <select id="single-menu-tasks" onchange="updateSingleVideo()">
+                      <option value="align-rope">align-rope</option>
+                      <option value="assembling-kits-seq-seen-colors">assembling-kits-seq-seen-colors</option>
+                      <option value="assembling-kits-seq-unseen-colors">assembling-kits-seq-unseen-colors</option>
+                      <option value="packing-boxes-pairs-seen-colors">packing-boxes-pairs-seen-colors</option>
+                      <option value="packing-boxes-pairs-unseen-colors">packing-boxes-pairs-unseen-colors</option>
+                      <option value="packing-seen-google-objects-seq" selected="selected">packing-seen-google-objects-seq</option>
+                      <option value="packing-unseen-google-objects-seq">packing-unseen-google-objects-seq</option>
+                      <option value="packing-seen-google-objects-group">packing-seen-google-objects-group</option>
+                      <option value="packing-unseen-google-objects-group">packing-unseen-google-objects-group</option>
+                      <option value="packing-shapes">packing-shapes</option>
+                      <option value="put-block-in-bowl-seen-colors">put-block-in-bowl-seen-colors</option>
+                      <option value="put-block-in-bowl-unseen-colors">put-block-in-bowl-unseen-colors</option>
+                      <option value="separating-piles-seen-colors">separating-piles-seen-colors</option>
+                      <option value="separating-piles-unseen-colors">separating-piles-unseen-colors</option>
+                      <option value="stack-block-pyramid-seq-seen-colors">stack-block-pyramid-seq-seen-colors</option>
+                      <option value="stack-block-pyramid-seq-unseen-colors">stack-block-pyramid-seq-unseen-colors</option>
+                      <option value="towers-of-hanoi-seq-seen-colors">towers-of-hanoi-seq-seen-colors</option>
+                      <option value="towers-of-hanoi-seq-unseen-colors">towers-of-hanoi-seq-unseen-colors</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="control">
+                  <div class="select is-small">
+                    <select id="single-menu-instances" onchange="updateSingleVideo()">
+                      <option value="01">01</option>
+                      <option value="02">02</option>
+                      <option value="03">03</option>
+                      <option value="04">04</option>
+                      <option value="05" selected="selected">05</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <video id="single-task-result-video"
+                   controls
+                   muted
+                   autoplay
+                   loop
+                   width="100%">
+              <source src="https://cliport.github.io/media/results_web/packing-seen-google-objects-seq-two_stream_full_clip_lingunet_lat_transporter-n1000-train/videos/packing-seen-google-objects-seq-000005.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <!-- Multi-Task Models Column -->
+      <div class="column is-half-tablet is-full-mobile">
+        <div class="box">
+          <h3 class="title is-5">One Multi-Task Model</h3>
+
+          <div class="field">
+            <label class="label">Configuration</label>
+            <div class="control">
+              <div class="field has-addons">
+                <div class="control">
+                  <div class="select is-small">
+                    <select id="multi-menu-demos" onchange="updateMultiVideo()">
+                      <option value="1">1 T</option>
+                      <option value="10">10 T</option>
+                      <option value="100">100 T</option>
+                      <option value="1000" selected="selected">1000 T</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="control">
+                  <div class="select is-small">
+                    <select id="multi-menu-tasks" onchange="updateMultiVideo()">
+                      <option value="align-rope">align-rope</option>
+                      <option value="assembling-kits-seq-seen-colors">assembling-kits-seq-seen-colors</option>
+                      <option value="assembling-kits-seq-unseen-colors">assembling-kits-seq-unseen-colors</option>
+                      <option value="packing-boxes-pairs-seen-colors" selected="selected">packing-boxes-pairs-seen-colors</option>
+                      <option value="packing-boxes-pairs-unseen-colors">packing-boxes-pairs-unseen-colors</option>
+                      <option value="packing-seen-google-objects-seq">packing-seen-google-objects-seq</option>
+                      <option value="packing-unseen-google-objects-seq">packing-unseen-google-objects-seq</option>
+                      <option value="packing-seen-google-objects-group">packing-seen-google-objects-group</option>
+                      <option value="packing-unseen-google-objects-group">packing-unseen-google-objects-group</option>
+                      <option value="packing-shapes">packing-shapes</option>
+                      <option value="put-block-in-bowl-seen-colors">put-block-in-bowl-seen-colors</option>
+                      <option value="put-block-in-bowl-unseen-colors">put-block-in-bowl-unseen-colors</option>
+                      <option value="separating-piles-seen-colors">separating-piles-seen-colors</option>
+                      <option value="separating-piles-unseen-colors">separating-piles-unseen-colors</option>
+                      <option value="stack-block-pyramid-seq-seen-colors">stack-block-pyramid-seq-seen-colors</option>
+                      <option value="stack-block-pyramid-seq-unseen-colors">stack-block-pyramid-seq-unseen-colors</option>
+                      <option value="towers-of-hanoi-seq-seen-colors">towers-of-hanoi-seq-seen-colors</option>
+                      <option value="towers-of-hanoi-seq-unseen-colors">towers-of-hanoi-seq-unseen-colors</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="control">
+                  <div class="select is-small">
+                    <select id="multi-menu-instances" onchange="updateMultiVideo()">
+                      <option value="01">01</option>
+                      <option value="02">02</option>
+                      <option value="03">03</option>
+                      <option value="04" selected="selected">04</option>
+                      <option value="05">05</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <video id="multi-task-result-video"
+                   controls
+                   muted
+                   autoplay
+                   loop
+                   width="100%">
+              <source src="https://cliport.github.io/media/results_web/packing-boxes-pairs-seen-colors-two_stream_full_clip_lingunet_lat_transporter-n1000-train/videos/multi-language-conditioned-packing-boxes-pairs-seen-colors-000004.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 </body>
 </html>

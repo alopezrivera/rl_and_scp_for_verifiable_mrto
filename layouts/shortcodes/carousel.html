@@ -1,0 +1,33 @@
+<!-- layouts/shortcodes/carousel.html -->
+<section class="carousel-section">
+  <div id="{{ .Get "id" }}" class="carousel">
+    {{ .Inner }}
+  </div>
+</section>
+
+{{ if .Get "init" }}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    bulmaCarousel.attach('#{{ .Get "id" }}', {
+      slidesToScroll: 1,
+      slidesToShow: 3, /* Showing 3 slides: previous, current, next */
+      infinite: true,
+      autoplay: true,
+      autoplaySpeed: 3000,
+      pauseOnHover: true,
+      breakpoints: [
+        {
+          width: 768,
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+        {
+          width: 480,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        }
+      ]
+    });
+  });
+</script>
+{{ end }}
