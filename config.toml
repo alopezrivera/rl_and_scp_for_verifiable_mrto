@@ -1,4 +1,19 @@
 baseURL = "http://example.org/"
 languageCode = "en-us"
 title = "Academic Paper Website"
-theme = ""
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.parser]
+      unsafe = true
+    [markup.goldmark.renderer]
+      unsafe = true
+    [markup.goldmark.extensions]
+      tables = true
+      strikethrough = true
+      taskList = true
+      footnotes = true
+      definitionList = true
+      autolink = true
+      linkify = true
+      superscript = true

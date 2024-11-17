@@ -1,8 +1,39 @@
 <meta charset="utf-8">
 <title>{{ .Title }}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+<meta name="description" content="{{ .Params.description }}">
+<meta name="keywords" content="{{ .Params.keywords }}">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+<!-- Stylesheets -->
+<link rel="stylesheet" href="{{ "css/bulma.min.css" | relURL }}">
+<!-- Font Awesome CDN -->
+<link 
+    rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+    crossorigin="anonymous" 
+    referrerpolicy="no-referrer" 
+/>
 <link rel="stylesheet" href="{{ "css/styles.css" | relURL }}">
-{{ if .Params.custom_js }}
-<script src="{{ .Params.custom_js }}"></script>
-{{ end }}
+
+<!-- Scripts -->
+<!-- jQuery CDN -->
+<script 
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" 
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" 
+    crossorigin="anonymous" 
+    referrerpolicy="no-referrer"
+>
+</script>
+
+<!-- Bulma Carousel CDN -->
+<script src="https://cdn.jsdelivr.net/npm/bulma-carousel/dist/js/bulma-carousel.min.js"></script>
+
+<!-- Bulma Slider CDN -->
+<script src="https://cdn.jsdelivr.net/npm/bulma-slider/dist/js/bulma-slider.min.js"></script>
+
+<!-- Custom Scripts -->
+<script src="{{ "js/index.js" | relURL }}"></script>

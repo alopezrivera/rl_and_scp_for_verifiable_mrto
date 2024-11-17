@@ -1,13 +1,111 @@
-body {
-    font-family: 'Noto Sans', sans-serif;
-    margin: 0;
-    padding: 0;
+/* Custom Styles */
+.hero {
+  background-color: #ffffff;
 }
-header, footer {
-    background-color: #f5f5f5;
-    padding: 1em;
-    text-align: center;
+
+.publication-title {
+  font-size: 2rem;
 }
-main {
-    padding: 2em;
+
+.author-block {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.publication-links .link-block {
+  margin: 5px;
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Ensure icons within publication-links are white */
+.publication-links .icon i {
+  color: #ffffff; /* White color */
+}
+
+/* Alternatively, target all Font Awesome icons globally */
+i[class^="fa-"], i[class*=" fa-"] {
+  color: #ffffff; /* White color */
+}
+
+.button.is-dark {
+  background-color: #000000; /* Black background */
+  color: #ffffff; /* White text */
+}
+
+/* Ensure the icon inside the button is white */
+.button.is-dark .icon i {
+  color: #ffffff;
+}
+
+/* Abstract Section Container */
+.abstract-section {
+  padding: 2rem 1rem; /* Optional padding for better spacing */
+}
+
+/* Abstract Content Styling */
+.abstract-content {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+/* Dynamically Adjust Width Based on Data Attribute */
+.abstract-content[data-width="0.7"] {
+  max-width: 70%;
+}
+
+.abstract-content[data-width="0.6"] {
+  max-width: 60%;
+}
+
+/* Add more as needed */
+
+/* Center Titles Within Abstract */
+.abstract-content h1,
+.abstract-content h2,
+.abstract-content h3,
+.abstract-content h4,
+.abstract-content h5,
+.abstract-content h6 {
+  text-align: center;
+}
+
+/* Optional: Adjust Paragraph Styling Within Abstract */
+.abstract-content p {
+  line-height: 1.6;
+  color: #333333;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .abstract-content {
+    max-width: 90% !important; /* Override for smaller screens */
+  }
+}
+
+/* Widebox Styling */
+.widebox {
+  width: 120%;
+  max-width: none;
+  margin-left: -10%;
+  margin-right: -10%;
+  display: flex;
+  justify-content: center;
+}
+
+.widebox iframe {
+  max-width: 100%;
+  height: auto;
 }

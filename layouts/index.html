@@ -1,0 +1,55 @@
+{{ define "main" }}
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">{{ .Title }}</h1>
+          <div class="is-size-5 publication-authors">
+            <!-- Authors List -->
+            {{ with .Params.authors }}
+              {{ $totalAuthors := len . }}
+              {{ range $index, $author := . }}
+                <span class="author-block">
+                  <a href="{{ $author.website }}">{{ $author.name }}</a><sup>{{ $author.affiliation }}</sup>{{ if lt $index (sub $totalAuthors 1) }},{{ end }}
+                </span>
+              {{ end }}
+            {{ end }}
+          </div>
+
+          <div class="is-size-5 publication-affiliations">
+            <!-- Affiliations -->
+            {{ with .Params.affiliations }}
+              <span class="author-block">{{ . | safeHTML }}</span>
+            {{ end }}
+          </div>
+
+          <div class="publication-links">
+            <!-- Links to Paper, Code, etc. -->
+            {{ with .Params.links }}
+              {{ range . }}
+                <span class="link-block">
+                  <a href="{{ .url }}" class="button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="{{ .icon }}"></i>
+                    </span>
+                    <span>{{ .text }}</span>
+                  </a>
+                </span>
+              {{ end }}
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Main Content -->
+<section class="section">
+  <div class="container is-max-desktop content">
+    {{ .Content }}
+  </div>
+</section>
+{{ end }}

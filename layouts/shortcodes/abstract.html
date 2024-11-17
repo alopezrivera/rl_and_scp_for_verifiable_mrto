@@ -1,0 +1,9 @@
+<section class="section abstract-section">
+    <div class="container is-max-desktop">
+        <div class="content">
+            <div class="abstract-content" data-width="{{ .Get "width" | default 0.7 }}">
+                {{ .Inner | markdownify }}
+            </div>
+        </div>
+    </div>
+</section>

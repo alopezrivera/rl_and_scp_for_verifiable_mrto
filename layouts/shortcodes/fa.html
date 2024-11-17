@@ -1,0 +1,6 @@
+{{ $faStylePrefix := "fa-solid" }}
+{{ if in (slice "fa-solid" "fa-regular" "fa-brands") (.Get 0) }}
+  {{ $faStylePrefix = (.Get 0) }}
+{{ end }}
+
+<i class="{{ $faStylePrefix }} {{ range $iconName := .Params }} fa-{{ $iconName }} {{ end }}"></i>

@@ -1,11 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     {{ partial "head.html" . }}
 </head>
 <body>
-    {{ partial "header.html" . }}
+    <!-- Navigation -->
+    {{ partial "navbar.html" . }}
+
+    <!-- Main Content -->
     {{ block "main" . }}{{ end }}
+
+    <!-- Footer -->
     {{ partial "footer.html" . }}
+
+    <!-- Scripts -->
+    {{ partial "scripts.html" . }}
 </body>
 </html>
