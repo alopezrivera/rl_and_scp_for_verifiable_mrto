@@ -3,7 +3,7 @@
 <head>
   {{ partial "head.html" . }}
   <!-- Include CSS files -->
-  {{ range .Resources.Match "**/*.css" }}
+  {{ range .Site.Home.Resources.Match "home/**/*.css" }}
     <link rel="stylesheet" href="{{ .RelPermalink }}">
   {{ end }}
 </head>
@@ -12,7 +12,7 @@
   {{ block "main" . }}{{ end }}
 
   <!-- Include JS files -->
-  {{ range .Resources.Match "**/*.js" }}
+  {{ range .Site.Home.Resources.Match "home/**/*.js" }}
     <script src="{{ .RelPermalink }}"></script>
   {{ end }}
 </body>

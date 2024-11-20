@@ -1,0 +1,15 @@
+{{ $resourcePath := .Get 0 }}
+
+{{ if .Page.IsHome }}
+  {{ with .Site.Home.Resources.GetMatch $resourcePath }}
+    {{ .Content | safeHTML }}
+  {{ else }}
+    {{ errorf "Resource '%s' not found on the home page." $resourcePath }}
+  {{ end }}
+{{ else }}
+  {{ with .Page.Resources.GetMatch $resourcePath }}
+    {{ .Content | safeHTML }}
+  {{ else }}
+    {{ errorf "Resource '%s' not found on page '%s'." $resourcePath .Page.Title }}
+  {{ end }}
+{{ end }}
