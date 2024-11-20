@@ -172,12 +172,6 @@ body {
     border-radius: 10px;
 }
 
-/* Special Text Variants */
-.dcliport,
-.dnerf {
-    font-variant: small-caps;
-}
-
 /* Teaser Section */
 .teaser {
     font-family: 'Google Sans', sans-serif;

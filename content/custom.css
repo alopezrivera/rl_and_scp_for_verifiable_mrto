@@ -15,3 +15,9 @@
     margin: 0; /* Remove any additional margin that constrains layout */
     box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1); /* Maintain box styling */
 }
+
+/* Special Text Variants */
+.dcliport,
+.dnerf {
+    font-variant: small-caps;
+}
