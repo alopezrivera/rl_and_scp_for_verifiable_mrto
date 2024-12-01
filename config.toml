@@ -1,6 +1,6 @@
-baseURL = "http://example.org/"
+baseURL = "https://alopezrivera.github.io/rl_and_scp_for_verifiable_mrto/"
 languageCode = "en-us"
-title = "Academic Paper Website"
+title = "Design And Optimization Of Multi-Rendezvous Manoeuvres Based On Reinforcement Learning And Convex Optimization"
 
 [privacy.googleAnalytics]
   respectDoNotTrack = true
