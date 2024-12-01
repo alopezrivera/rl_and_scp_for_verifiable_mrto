@@ -1,141 +1,112 @@
 ---
-title: "CLIPort: What and Where Pathways for Robotic Manipulation"
-description: "CLIPort combines semantic and spatial pathways for vision-based robotic manipulation."
-keywords: "Vision-Language Grounding, Manipulation, CLIP, TransporterNets"
+title: "Design And Optimization Of Multi-Rendezvous Manoeuvres Based On Reinforcement Learning And Convex Optimization"
+description: "Solving multi-rendezvous spacecraft guidance problems, with strict feasibility guarantees"
+keywords: "Trajectory Optimization, On-Orbit Servicing, Reinforcement Learning, Sequential Convex Programming"
 venue:
-  name: "CoRL 2021"
-  website: "https://www.robot-learning.org/"
+  name: "75<sup>th</sup> International Astronautical Congress, 2024"
+  website: "https://www.iac2024.org"
 authors:
-  - name: "Mohit Shridhar"
-    website: "https://mohitshridhar.com"
-    affiliation: "1"
-  - name: "Lucas Manuelli"
-    website: "http://lucasmanuelli.com/"
+  - name: "Antonio López Rivera"
+    website: "https://www.linkedin.com/in/alopezrivera/"
+    affiliation: "1,2"
+  - name: "Lucrezia Marcovaldi"
     affiliation: "2"
-  - name: "Dieter Fox"
-    website: "https://homes.cs.washington.edu/~fox/"
-    affiliation: "1, 2"
-affiliations: "<sup>1</sup>University of Washington, <sup>2</sup>NVIDIA"
+  - name: "Jesús Ramírez"
+    affiliation: "2"
+  - name: "Alex Cuenca"
+    affiliation: "2"
+  - name: "David Bermejo"
+    affiliation: "2"
+affiliations: "<sup>1</sup>Delft University of Technology, <sup>2</sup>Sener Aerospace & Defence"
 links:
-  - url: "https://arxiv.org/pdf/2109.12098.pdf"
+  - url: "https://arxiv.org/pdf/2411.11778"
     icon: "fas fa-file-pdf"
-    text: "Paper"
-  - url: "https://youtu.be/UdzoagBgWTA"
-    icon: "fab fa-youtube"
-    text: "Video"
-    
-  - url: "https://github.com/cliport/cliport"
-    icon: "fab fa-github"
-    text: "Code"
+    text: "Preprint"
+  - url: "https://dl.iafastro.directory/event/IAC-2024/paper/87909/"
+    icon: "fas fa-book"
+    text: "Proceedings"
 ---
 
 <section class="hero teaser">
   <div class="container is-fullhd">
     <div class="hero-body">
-      <video id="teaser" autoplay muted loop height="100%">
-        <source src="https://cliport.github.io/media/videos/10sim_web_teaser.mp4"
-                type="video/mp4">
-      </video>
+      {{< figure src="media/cover/final.png" alt="Artistic representation of the near-Earth environment, from the vantage point of the Lunar surface, with logistical rendezvous operations represented as nodes around the Earth.">}}
       <h2 class="subtitle has-text-centered">
-      </br>
-        <span class="dcliport">CLIPort</span> is an end-to-end imitation-learning agent that can learn a single language-conditioned policy for various tabletop tasks.
+      We present a framework for solving multi-rendezvous spacecraft guidance problems with strict feasibility guarantees.
       </h2>
     </div>
   </div>
 </section>
 
-{{< carousel id="results-carousel" init=true >}}
-<div class="carousel-item">
-  <video class="carousel-video" controls autoplay muted loop preload="none">
-    <source src="https://cliport.github.io/media/videos/1_folding.mp4" type="video/mp4">
-  </video>
-</div>
-<div class="carousel-item">
-  <video class="carousel-video" controls autoplay muted loop preload="none">
-    <source src="https://cliport.github.io/media/videos/4_chess.mp4" type="video/mp4">
-  </video>
-</div>
-<div class="carousel-item">
-  <video class="carousel-video" controls autoplay muted loop preload="none">
-    <source src="https://cliport.github.io/media/videos/3_packing.mp4" type="video/mp4">
-  </video>
-</div>
-<div class="carousel-item">
-  <video class="carousel-video" controls autoplay muted loop preload="none">
-    <source src="https://cliport.github.io/media/videos/6_sweeping.mp4" type="video/mp4">
-  </video>
-</div>
-{{< /carousel >}}
-
 {{< abstract >}}
 
 # Abstract
 
-How can we imbue robots with the ability to manipulate objects precisely but also to reason about them in terms of abstract concepts?
-
-Recent works in manipulation have shown that end-to-end networks can learn dexterous skills that require precise spatial reasoning, but these methods often fail to generalize to new goals or quickly learn transferable concepts across tasks. In parallel, there has been great progress in learning generalizable semantic representations for vision and language by training on large-scale internet data; however, these representations lack the spatial understanding necessary for fine-grained manipulation. To this end, we propose a framework that combines the best of both worlds: a two-stream architecture with semantic and spatial pathways for vision-based manipulation. Specifically, we present **CLIPort**, a language-conditioned imitation-learning agent that combines the broad semantic understanding (*what*) of [CLIP](https://openai.com/blog/clip/) with the spatial precision (*where*) of [TransporterNets](https://transporternets.github.io/).
-
-Our end-to-end framework is capable of solving a variety of language-specified tabletop tasks from packing unseen objects to folding cloths, all **without any explicit representations** of object poses, instance segmentations, memory, symbolic states, or syntactic structures. Experiments in simulation and hardware show that our approach is data-efficient and generalizes effectively to seen and unseen semantic concepts. We even train **one multi-task policy** for 10 simulated and 9 real-world tasks that shows better or comparable performance to single-task policies.
+Optimizing space vehicle routing is crucial for critical applications such as on-orbit servicing,
+constellation deployment, and space debris de-orbiting. Multi-target Rendezvous presents a
+significant challenge in this domain. This problem involves determining the optimal sequence
+in which to visit a set of targets, and the corresponding optimal trajectories: this results in
+a demanding NP-hard problem. We introduce a framework for the design and refinement of
+multi-rendezvous trajectories based on heuristic combinatorial optimization and Sequential
+Convex Programming. Our framework is both highly modular and capable of leveraging
+candidate solutions obtained with advanced approaches and handcrafted heuristics. We
+demonstrate this flexibility by integrating an Attention-based routing policy trained with
+Reinforcement Learning to improve the performance of the combinatorial optimization
+process. We show that Reinforcement Learning approaches for combinatorial optimization
+can be effectively applied to spacecraft routing problems. We apply the proposed framework
+to the UARX Space OSSIE mission: we are able to thoroughly explore the mission design
+space, finding optimal tours and trajectories for a wide variety of mission scenarios.
 
 {{< /abstract >}}
 
-# Video
+# Mission
 
-<div class="publication-video">
-  <iframe src="https://www.youtube.com/embed/UdzoagBgWTA?rel=0&amp;showinfo=0"
-          frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-</div>
+OSSIE is a modular Orbit Transfer Vehicle by [UARX Space](https://www.uarx.com), designed to deliver multiple payloads—including PocketQubes, CubeSats, and small satellites—to Low Earth Orbit. It operates using four [Dawn Aerospace](https://www.dawnaerospace.com) B20 bi-propellant thrusters, constrained to multiple-revolution transfers with up to two impulses per orbit due to duty-cycle limitations. The mission involves minimizing fuel consumption while accounting for multi-revolution impulsive maneuvers under perturbations, the impact of mass deployment sequence on propellant usage, and constraints on insertion and decommissioning orbits.
 
-# CLIPort
+{{< figure src="media/OSSIE.png" alt="UARX Space OSSIE Orbit Transfer Vehicle" caption="UARX Space OSSIE Orbit Transfer Vehicle." class="half-width-image" >}}
 
-## Two-Stream Architecture
+# Solution framework
 
-Broadly inspired by the [two-stream hypothesis in cognitive psychology](https://en.wikipedia.org/wiki/Two-streams_hypothesis), we present a two-stream architecture for vision-based manipulation with semantic and spatial pathways. The semantic stream uses a pre-trained CLIP model to encode RGB and language-goal input. Since CLIP is trained with large amounts of image-caption pairs from the internet, it acts as a powerful semantic prior for [grounding visual concepts](https://distill.pub/2021/multimodal-neurons/) like colors, shapes, parts, texts, and object categories. The spatial stream is a tabula rasa fully-convolutional network that encodes RGB-D input.
+We propose a modular solver architecture with a three-stage pipeline: heuristic optimization, trajectory re-optimization, and verification. The heuristic optimization stage determines optimal target sequences, integrating arbitrary hand-crafted and advanced solvers—exact or learned—through distance-based permutation sampling. The trajectory re-optimization stage refines these sequences to generate feasible and near-optimal trajectories, and the verification stage ensures compliance with mission requirements.
 
-![Two-Stream Architecture](https://cliport.github.io/media/images/two_stream_architecture.png)
+{{< figure src="media/solver_arch.png" alt="Solver architecture" caption="STSP solver architecture. In black: complex components (integrated using standardized interfaces) the internal structure of which is out of the scope of this diagram." >}}
 
-**Paradigm 1:** Unlike existing object detectors, CLIP is not limited to a predefined set of object classes. And unlike other vision-language models, it's not restricted by a top-down pipeline that detects objects with bounding boxes or instance segmentations. This allows us to forgo the traditional paradigm of training explicit detectors for cloths, pliers, chessboard squares, cherry stems, and other arbitrary things.
+# Neural Combinatorial Optimization for Multi-Rendezous Spacecraft Guidance
 
-## TransporterNets
+An attention-based routing policy was implemented for the OSSIE mission's Space Traveling Salesman Problem. The policy uses an encoder-decoder architecture first introduced by [Kool et al. (2015)](https://arxiv.org/abs/1803.08475) and is trained via Reinforcement Learning (RL). The [RL4CO Neural Combinatorial Optimization library](https://rl4.co) was used to implement and train the policy using the REINFORCE, Advantage Actor-Critic, and Proximal Policy Optimization RL algorithms on 100,000 ten-transfer mission scenarios. 
 
-We use this two-stream architecture in all three networks of [TransporterNets](https://transporternets.github.io/) to predict pick and place affordances at each timestep. TransporterNets first attends to a local region to decide where to pick, then computes a placement location by finding the best match for the picked region through cross-correlation of deep visual features. This structure serves as a powerful inductive bias for learning [roto-translationally equivariant](https://fabianfuchsml.github.io/equivariance1of2/) representations in tabletop environments.
+{{< figure src="media/network_architecture.png" alt="Network architecture" caption="Architecture of the autoregressive, attention-based policy used in this work. The encoder comprises a fully connected network and a GAT with a feedforward layer. Edge embeddings are omitted as the STSP graph is fully connected. The decoder constructs at each step a context embedding $\mathbf{Q}$ used as the query for the PN attention mechanism. This diagram is based on the general \code{RL4CO} policy architecture diagram by \cite{berto_rl4co_2024}. Refer to \cite{kool_attention_2019} and \cite{vinyals_pointer_2017} for more information about the internal structure of the GAT and PN." >}}
 
-<div class="content has-text-centered">
-    <video id="transporter-gif"
-            controls
-            muted
-            autoplay
-            loop
-            width="40%">
-    <source src="https://transporternets.github.io/images/animation.mp4"
-            type="video/mp4">
-    </video>
-    <p>
-    Credit: <a href="https://transporternets.github.io/">Zeng et. al (Google)</a>
-    </p>
-</div>
+REINFORCE provided the best performance, achieving a mean optimality gap of 3.02% compared to heuristic solutions when employing Beam Search. While this performance is significant, it may not directly generalize to fully dynamic STSPs due to the near-static nature of the problem without RAAN targeting. However, the results are promising for future research on spacecraft autonomy in multi-rendezvous missions using Neural Combinatorial Optimization methods.
 
-**Paradigm 2:** TransporterNets takes an [action-centric approach](https://en.wikipedia.org/wiki/Ecological_psychology) to perception where the objective is to *detect actions* rather than *detect objects* and then learn a policy. Keeping the action-space grounded in the perceptual input allows us to exploit geometric symmetries for efficient representation learning. When combined with CLIP's pre-trained representations, this enables the learning of reusable manipulation skills without any "objectness" assumptions.
+{{< figure src="media/rl_perf.png" alt="Policy training curve" caption="Validation reward curve (expressed as a mean optimality gap with respect to the solutions obtained using Heuristic Combinatorial Optimization) with REINFORCE, A2C and PPO." class="half-width-image" >}}
 
-## Results
+# Mission analysis
 
-{{< include-html "result-video-pick.html" >}}
+A Monte Carlo analysis of 5,000 mission scenarios was performed using OSSIE's nominal payload list. The study concluded that fuel consumption and mission cost are mainly influenced by the number of payload bundles and the inclination range. In all cases, OSSIE is capable of completing its mission and decommissioning sequence.
 
-### Affordance Predictions
+The Sequential Convex Programming (SCP) algorithm was validated for trajectory re-optimization, successfully adapting transfer maneuvers to spacecraft constraints with minimal impact on injection errors or $\Delta V$. In non-coplanar scenarios, SCP reduced propellant consumption by 8.5% compared to the combinatorial approximation, although complete eccentricity elimination was not achieved.
 
-Examples of pick and place affordance predictions from multi-task **CLIPort** models:
+Verification in a high-fidelity simulator confirmed that the optimized trajectories meet mission requirements. Additional $\Delta V$ was observed in simulations due to pointing correction maneuvers, as the spacecraft uses Dawn Aerospace B1 thrusters for attitude control. Total transfer cost remained feasible for OSSIE.
 
-![Affordance Predictions](https://cliport.github.io/media/images/affordances.png)
+{{< figure src="media/pairplot.png" alt="Mission cost in fuel mass, delta V and TOF, as a function of number of bundles, inclination range and standard deviation, and semi-major axis range and standard deviation" caption="Mission cost in fuel mass, delta V and TOF, as a function of number of bundles, inclination range and standard deviation, and semi-major axis range and standard deviation" >}}
 
-![Affordance Predictions](https://cliport.github.io/media/images/affordance2.png)
+# Conclusion
 
-## BibTeX
+An optimization framework for the Multi-target Rendezvous problem has been developed and applied to the UARX Space OSSIE mission. It determines optimal target sequences and near fuel-optimal trajectories, integrating a Reinforcement Learning-trained Attention-based routing policy. The framework accommodates OSSIE's propulsion requirements, adapts to mission constraints, and supports future extensions.
+
+# Acknowledgements
+
+This work is the result of a collaborative effort between the [Delft University of Technology](https://www.tudelft.nl/en/ae) and [SENER Aerospace & Defence](https://www.group.sener/en/markets/aerospace/). We would like to thank Marc Naeije from TU Delft for his endorsement of the project and for his keen supervision and advice. We would like to extend our gratitude to Mercedes Ruiz for making this research possible at Sener Aerospace & Defence. Lastly, we thank UARX Space for entrusting us with OSSIE's maiden flight, the first of many missions to come. Ad astra.
 
 ```bibtex
-@inproceedings{shridhar2021cliport,
-  title     = {CLIPort: What and Where Pathways for Robotic Manipulation},
-  author    = {Shridhar, Mohit and Manuelli, Lucas and Fox, Dieter},
-  booktitle = {Proceedings of the 5th Conference on Robot Learning (CoRL)},
-  year      = {2021},
+@inproceedings{lopez_rivera_design_2024,
+	title = {Design and {Optimization} of {Multi}-{Rendezvous} {Maneuvres} based on {Reinforcement} {Learning} and {Convex} {Optimization}},
+	url = {https://dl.iafastro.directory/event/IAC-2024/paper/87909/},
+	booktitle = {Proceedings of the 75th {International} {Astronautical} {Congress}},
+	publisher = {International Astronautical Federation},
+	author = {López Rivera, Antonio and Marcovaldi, Lucrezia and Ramírez Sánchez, Jesús Fernando and Alex, Cuenca and David, Bermejo},
+	year = {2024},
+	pages = {18},
 }
 ```

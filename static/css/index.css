@@ -4,6 +4,46 @@ body {
     text-align: justify; /* Justify all text */
 }
 
+/* Center-align titles within the Abstract section */
+.abstract-section h1,
+.abstract-section h2,
+.abstract-section h3,
+.abstract-section h4,
+.abstract-section h5,
+.abstract-section h6 {
+    text-align: center;
+}
+
+/* Ensure the figure spans full width */
+figure.half-width-image {
+    width: 100%;
+    margin: 20px 0;
+    text-align: left; /* Align caption text to the left */
+}
+
+/* Center the image with variable width */
+figure.half-width-image img {
+    width: 50%; /* Adjust this value as needed */
+    display: block;
+    margin: 0 auto;
+}
+
+/* Style the caption to span full width */
+figure figcaption {
+    width: 100%;
+    text-align: left;
+    font-size: 0.9em;
+    color: #555;
+    margin-top: 8px;
+}
+
+/* Ensure the abstract-section centers its content */
+.abstract-section {
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center;    /* Centers vertically if needed */
+}
+
 /* Reduce bottom margin of the publication links */
 .publication-links {
   margin-bottom: 0;
@@ -88,7 +128,7 @@ body {
 }
 
 .publication-authors a {
-    color: hsl(121, 100%, 36%) !important;
+    color: hsl(203, 97%, 69%) !important;
 }
 
 .publication-authors a:hover {

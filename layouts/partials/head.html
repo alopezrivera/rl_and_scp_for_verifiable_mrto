@@ -37,3 +37,8 @@
 <script src="{{ "js/bulma-slider.min.js" | relURL }}"></script>
 <!-- Custom Scripts -->
 <script src="{{ "js/index.js" | relURL }}"></script>
+
+<!-- Math -->
+{{ if .Param "math" }}
+{{ partialCached "math.html" . }}
+{{ end }}

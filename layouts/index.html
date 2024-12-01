@@ -8,7 +8,7 @@
           <h1 class="title is-1 publication-title">{{- .Title }}</h1>
           {{- with .Params.venue }}
             <h3 class="title is-4 conference-authors">
-              <a target="_blank" href="{{- .website }}">{{- .name }}</a>
+              <a target="_blank" href="{{- .website }}">{{- .name | safeHTML }}</a>
             </h3>
           {{- end }}
           <div class="is-size-5 publication-authors">

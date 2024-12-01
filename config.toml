@@ -19,6 +19,11 @@ title = "Academic Paper Website"
       autolink = true
       linkify = true
       superscript = true
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['\[', '\]'], ['$$', '$$']]
+          inline = [['\(', '\)'], ['$', '$']]
   [markup.highlight]
     anchorLineNos = false
     codeFences = true
@@ -32,3 +37,6 @@ title = "Academic Paper Website"
     noHl = false
     style = 'algol_nu'
     tabWidth = 4
+
+[params]
+  math = true
