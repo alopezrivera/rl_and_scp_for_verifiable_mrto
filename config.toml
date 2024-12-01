@@ -2,8 +2,10 @@ baseURL = "https://alopezrivera.github.io/rl_and_scp_for_verifiable_mrto/"
 languageCode = "en-us"
 title = "Design And Optimization Of Multi-Rendezvous Manoeuvres Based On Reinforcement Learning And Convex Optimization"
 
-[privacy.googleAnalytics]
-  respectDoNotTrack = true
+[params]
+  favicon = "img/favicon.ico"
+  math = true
+
 [markup]
   [markup.goldmark]
     [markup.goldmark.parser]
@@ -38,5 +40,5 @@ title = "Design And Optimization Of Multi-Rendezvous Manoeuvres Based On Reinfor
     style = 'algol_nu'
     tabWidth = 4
 
-[params]
-  math = true
+[privacy.googleAnalytics]
+  respectDoNotTrack = true
