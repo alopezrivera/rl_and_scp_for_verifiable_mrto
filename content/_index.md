@@ -25,20 +25,16 @@ links:
   - url: "https://dl.iafastro.directory/event/IAC-2024/paper/87909/"
     icon: "fas fa-book"
     text: "Proceedings"
+bibFile: data/bib.json
 ---
 
-<section class="hero teaser">
-  <div class="container is-fullhd">
-    <div class="hero-body">
-      {{< figure src="media/cover/final.png" alt="Artistic representation of the near-Earth environment, from the vantage point of the Lunar surface, with logistical rendezvous operations represented as nodes around the Earth.">}}
-      <h2 class="subtitle has-text-centered">
-      We present a framework for solving multi-rendezvous spacecraft guidance problems with strict feasibility guarantees.
-      </h2>
-    </div>
-  </div>
-</section>
+{{< figure src="media/cover/final.png" alt="Artistic representation of the cis-lunar logistical environment" caption="Image created with the assistance of DALL·E 2" >}}
 
 {{< abstract >}}
+
+<h4 class="subtitle has-text-centered">
+  We present a framework for solving multi-rendezvous spacecraft guidance problems with strict feasibility guarantees.
+</h4>
 
 # Abstract
 
@@ -61,11 +57,11 @@ space, finding optimal tours and trajectories for a wide variety of mission scen
 
 # Mission
 
-OSSIE is a modular Orbit Transfer Vehicle by [UARX Space](https://www.uarx.com), designed to deliver multiple payloads—including PocketQubes, CubeSats, and small satellites—to Low Earth Orbit. It operates using four [Dawn Aerospace](https://www.dawnaerospace.com) B20 bi-propellant thrusters, constrained to multiple-revolution transfers with up to two impulses per orbit due to duty-cycle limitations. The mission involves minimizing fuel consumption while accounting for multi-revolution impulsive maneuvers under perturbations, the impact of mass deployment sequence on propellant usage, and constraints on insertion and decommissioning orbits.
+Orbit Solutions to Simplify Injection and Exploration (OSSIE) is a modular Orbit Transfer Vehicle by [UARX Space](https://www.uarx.com), designed to deliver multiple payloads—including PocketQubes, CubeSats, and small satellites—to Low Earth Orbit. It operates using four [Dawn Aerospace](https://www.dawnaerospace.com) B20 bi-propellant thrusters, and is capable of multi-revolution impulsive manoeuvers. In this work we present the guidance system developed for OSSIE. The goal of the guidance system is to determine strictly feasible trajectories that minimize fuel consumption for multiple payload deployment missions, accounting for all factors that impact trajectory feasibility and cost. Most importantly: gravity gradient perturbations, the impact of mass deployment sequence on propellant usage, and constraints on insertion and decommissioning orbits.
 
-{{< figure src="media/OSSIE.png" alt="UARX Space OSSIE Orbit Transfer Vehicle" caption="UARX Space OSSIE Orbit Transfer Vehicle." class="half-width-image" >}}
+{{< figure src="media/OSSIE.png" alt="UARX Space OSSIE Orbit Transfer Vehicle" caption="UARX Space OSSIE Orbit Transfer Vehicle. Refer to the [official UARX Space OSSIE information page](https://www.uarx.com/projects/ossie.php) for up to date information and commercial operations. Credit: UARX Space." width=0.5 >}}
 
-# Solution framework
+# Guidance Framework
 
 We propose a modular solver architecture with a three-stage pipeline: heuristic optimization, trajectory re-optimization, and verification. The heuristic optimization stage determines optimal target sequences, integrating arbitrary hand-crafted and advanced solvers—exact or learned—through distance-based permutation sampling. The trajectory re-optimization stage refines these sequences to generate feasible and near-optimal trajectories, and the verification stage ensures compliance with mission requirements.
 
@@ -73,21 +69,21 @@ We propose a modular solver architecture with a three-stage pipeline: heuristic 
 
 # Neural Combinatorial Optimization for Multi-Rendezous Spacecraft Guidance
 
-An attention-based routing policy was implemented for the OSSIE mission's Space Traveling Salesman Problem. The policy uses an encoder-decoder architecture first introduced by [Kool et al. (2015)](https://arxiv.org/abs/1803.08475) and is trained via Reinforcement Learning (RL). The [RL4CO Neural Combinatorial Optimization library](https://rl4.co) was used to implement and train the policy using the REINFORCE, Advantage Actor-Critic, and Proximal Policy Optimization RL algorithms on 100,000 ten-transfer mission scenarios. 
+An attention-based routing policy was implemented for the OSSIE mission's Space Traveling Salesman Problem. The policy consists of an encoder-decoder network first introduced by [Kool et al. (2015)](https://arxiv.org/abs/1803.08475) and is trained via Reinforcement Learning (RL). The [`RL4CO` Neural Combinatorial Optimization library](https://rl4.co) was used to implement and train the policy using the REINFORCE, Advantage Actor-Critic, and Proximal Policy Optimization RL algorithms on 100,000 ten-transfer mission scenarios. 
 
-{{< figure src="media/network_architecture.png" alt="Network architecture" caption="Architecture of the autoregressive, attention-based policy used in this work. The encoder comprises a fully connected network and a GAT with a feedforward layer. Edge embeddings are omitted as the STSP graph is fully connected. The decoder constructs at each step a context embedding $\mathbf{Q}$ used as the query for the PN attention mechanism. This diagram is based on the general \code{RL4CO} policy architecture diagram by \cite{berto_rl4co_2024}. Refer to \cite{kool_attention_2019} and \cite{vinyals_pointer_2017} for more information about the internal structure of the GAT and PN." >}}
+{{< figure src="media/network_architecture.png" alt="Network architecture" caption="Architecture of the autoregressive, attention-based policy used in this work. The encoder comprises a fully connected network and a Graph Attention Network (GAT) with a feedforward layer. Edge embeddings are omitted as the STSP graph is fully connected. The decoder constructs at each step a context embedding $\mathbf{Q}$ used as the query for the Pointer Network (PN) attention mechanism. This diagram is based on the general `RL4CO` policy architecture diagram by [Berto et al. (2024)](https://arxiv.org/abs/2306.17100). Refer to [Kool et al. (2015)](https://arxiv.org/abs/1803.08475) and Vinyals et al. (2017) [Vinyals, Fortunato and Jaitly (2017)](http://arxiv.org/abs/1506.03134) for more information about the internal structure of the GATs and PNs." >}}
 
 REINFORCE provided the best performance, achieving a mean optimality gap of 3.02% compared to heuristic solutions when employing Beam Search. While this performance is significant, it may not directly generalize to fully dynamic STSPs due to the near-static nature of the problem without RAAN targeting. However, the results are promising for future research on spacecraft autonomy in multi-rendezvous missions using Neural Combinatorial Optimization methods.
 
-{{< figure src="media/rl_perf.png" alt="Policy training curve" caption="Validation reward curve (expressed as a mean optimality gap with respect to the solutions obtained using Heuristic Combinatorial Optimization) with REINFORCE, A2C and PPO." class="half-width-image" >}}
+{{< figure src="media/rl_perf.png" alt="Policy training curve" caption="Validation reward curve (expressed as a mean optimality gap with respect to the solutions obtained using Heuristic Combinatorial Optimization) with REINFORCE, A2C and PPO." width=0.5 >}}
 
-# Mission analysis
+# Mission Analysis
 
 A Monte Carlo analysis of 5,000 mission scenarios was performed using OSSIE's nominal payload list. The study concluded that fuel consumption and mission cost are mainly influenced by the number of payload bundles and the inclination range. In all cases, OSSIE is capable of completing its mission and decommissioning sequence.
 
-The Sequential Convex Programming (SCP) algorithm was validated for trajectory re-optimization, successfully adapting transfer maneuvers to spacecraft constraints with minimal impact on injection errors or $\Delta V$. In non-coplanar scenarios, SCP reduced propellant consumption by 8.5% compared to the combinatorial approximation, although complete eccentricity elimination was not achieved.
+The Sequential Convex Programming (SCP) algorithm was validated for trajectory re-optimization, successfully adapting transfer manoeuvers to spacecraft constraints with minimal impact on injection errors or $\Delta V$. In non-coplanar scenarios, SCP reduced propellant consumption by 8.5% compared to the combinatorial approximation, although complete eccentricity elimination was not achieved.
 
-Verification in a high-fidelity simulator confirmed that the optimized trajectories meet mission requirements. Additional $\Delta V$ was observed in simulations due to pointing correction maneuvers, as the spacecraft uses Dawn Aerospace B1 thrusters for attitude control. Total transfer cost remained feasible for OSSIE.
+Verification in a high-fidelity simulator confirmed that the optimized trajectories meet mission requirements. Additional $\Delta V$ was observed in simulations due to pointing correction manoeuvers, as the spacecraft uses Dawn Aerospace B1 thrusters for attitude control. Total transfer cost remained feasible for OSSIE.
 
 {{< figure src="media/pairplot.png" alt="Mission cost in fuel mass, delta V and TOF, as a function of number of bundles, inclination range and standard deviation, and semi-major axis range and standard deviation" caption="Mission cost in fuel mass, delta V and TOF, as a function of number of bundles, inclination range and standard deviation, and semi-major axis range and standard deviation" >}}
 

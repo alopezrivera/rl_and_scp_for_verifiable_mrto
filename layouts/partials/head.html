@@ -4,41 +4,82 @@
 <meta name="description" content="{{ .Params.description }}">
 <meta name="keywords" content="{{ .Params.keywords }}">
 
-<!-- Google Fonts -->
+<!-- 
+==================================================
+                Google Fonts
+==================================================
+-->
 <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
-<!-- Stylesheets -->
-<!-- Bulma -->
-<link rel="stylesheet" href="{{ "css/bulma.min.css" | relURL }}">
-<!-- Bulma Carousel -->
-<link rel="stylesheet" href="{{ "css/bulma-carousel.min.css" | relURL }}">
-<!-- Bulma Slider -->
-<link rel="stylesheet" href="{{ "css/bulma-slider.min.css" | relURL }}">
-<!-- Font Awesome -->
-<link rel="stylesheet" href="{{ "css/fontawesome.all.min.css" | relURL }}">
-<!-- Custom Stylesheets -->
-<link rel="stylesheet" href="{{ "css/index.css" | relURL }}">
-<!-- Highlight Syntax -->
-<link rel="stylesheet" href="{{ "css/syntax.css" | relURL }}">
+<!-- 
+==================================================
+             Static CSS Libraries
+       (Bulma, Bulma Extensions, Font Awesome)
+==================================================
+-->
+<!-- Bulma CSS Framework -->
+<link rel="stylesheet" href="{{ "/css/bulma.min.css" | relURL }}">
 
-<!-- Scripts -->
-<!-- jQuery -->
+<!-- Bulma Carousel Extension -->
+<link rel="stylesheet" href="{{ "/css/bulma-carousel.min.css" | relURL }}">
+
+<!-- Bulma Slider Extension -->
+<link rel="stylesheet" href="{{ "/css/bulma-slider.min.css" | relURL }}">
+
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href="{{ "/css/fontawesome.all.min.css" | relURL }}">
+
+<!-- 
+==================================================
+            Theme CSS files (if required)
+==================================================
+-->
+
+<!-- 
+==================================================
+          Custom Stylesheets (SCSS Compilation)
+==================================================
+-->
+{{ $css := resources.Get "scss/index.scss" | toCSS | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $css.Permalink }}" integrity="{{ $css.Data.Integrity }}" crossorigin="anonymous">
+
+<!-- 
+==================================================
+                 Third-Party Scripts
+       (jQuery, Font Awesome, Bulma Extensions)
+==================================================
+-->
+<!-- jQuery Library -->
 <script 
     src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" 
     integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" 
     crossorigin="anonymous" 
-    referrerpolicy="no-referrer"
->
-<!-- Font Awesome -->
-<script src="{{ "js/fontawesome.all.min.js" | relURL }}"></script>
-<!-- Bulma Carousel -->
-<script src="{{ "js/bulma-carousel.min.js" | relURL }}"></script>
-<!-- Bulma Slider -->
-<script src="{{ "js/bulma-slider.min.js" | relURL }}"></script>
-<!-- Custom Scripts -->
-<script src="{{ "js/index.js" | relURL }}"></script>
+    referrerpolicy="no-referrer">
+</script>
 
-<!-- Math -->
+<!-- Font Awesome JavaScript -->
+<script src="{{ "/js/fontawesome.all.min.js" | relURL }}"></script>
+
+<!-- Bulma Carousel JavaScript -->
+<script src="{{ "/js/bulma-carousel.min.js" | relURL }}"></script>
+
+<!-- Bulma Slider JavaScript -->
+<script src="{{ "/js/bulma-slider.min.js" | relURL }}"></script>
+
+<!-- 
+==================================================
+              Custom Scripts
+       (Site-Specific JavaScript Functionality)
+==================================================
+-->
+<script src="{{ "/js/index.js" | relURL }}"></script>
+
+<!-- 
+==================================================
+               Additional Features
+            (Math Rendering, etc.)
+==================================================
+-->
 {{ if .Param "math" }}
-{{ partialCached "math.html" . }}
+  {{ partialCached "math.html" . }}
 {{ end }}

@@ -5,9 +5,9 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">{{- .Title }}</h1>
+          <h1 class="title is-1 publication-title has-text-centered">{{- .Title }}</h1>
           {{- with .Params.venue }}
-            <h3 class="title is-4 conference-authors">
+            <h3 class="title is-4 conference-authors has-text-centered">
               <a target="_blank" href="{{- .website }}">{{- .name | safeHTML }}</a>
             </h3>
           {{- end }}

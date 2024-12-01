@@ -1,6 +1,8 @@
-<figure class="{{ .Get "class" | default "" }}">
-    <img src="{{ .Get "src" }}" alt="{{ .Get "alt" }}" />
+<figure class="variable-width-figure">
+    <img src="{{ .Get "src" }}"
+         alt="{{ .Get "alt" }}"
+         style="width: {{ mul ( .Get "width" | default 1 ) 100 }}%;" />
     {{ with .Get "caption" }}
-    <figcaption>{{ . }}</figcaption>
+        <figcaption>{{ . | markdownify }}</figcaption>
     {{ end }}
 </figure>

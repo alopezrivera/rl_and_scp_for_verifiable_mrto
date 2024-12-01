@@ -1,0 +1,33 @@
+/* Reset Bulma's figure styles within .content */
+.content figure.variable-width-figure {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    text-align: center; /* Center-align figures */
+}
+
+/* Style for variable-width figures */
+.variable-width-figure {
+    display: block;
+    /* Width is now set inline in the HTML */
+    padding: 0;
+    box-sizing: border-box;
+    text-align: center; /* Center the caption text */
+}
+
+/* Center the image within the figure */
+.variable-width-figure img {
+    display: block;
+    margin: 0 auto;
+    width: 100%; /* Image fills the figure's width */
+    height: auto;
+}
+
+/* Style the caption */
+.variable-width-figure figcaption {
+    width: 100%;
+    margin-top: 8px;
+    font-size: 0.9em;
+    color: #555;
+    text-align: justify;
+    text-align-last: left;
+}

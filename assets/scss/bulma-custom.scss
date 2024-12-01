@@ -1,0 +1,4 @@
+/* Override top margin for the section following the hero */
+.hero + .section {
+    margin-top: -3rem; /* Adjust this value as needed */
+}

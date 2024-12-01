@@ -1,0 +1,51 @@
+/* Global Styles */
+body {
+    font-family: 'Noto Sans', sans-serif;
+    text-align: justify; /* Justify all text */
+    margin: 0; /* Remove default margins */
+    padding: 0; /* Remove default padding */
+}
+
+/* Left-align titles within the Abstract section */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-align: left;
+    margin: 0.5em 0; /* Adjust margins as needed */
+}
+
+/* Center-align titles within the Abstract section */
+.abstract-section h1,
+.abstract-section h2,
+.abstract-section h3,
+.abstract-section h4,
+.abstract-section h5,
+.abstract-section h6 {
+    text-align: center;
+    margin: 0.5em 0; /* Adjust margins as needed */
+    margin-top: -2rem; /* Adjust this value as needed */
+}
+
+/* Reset box-sizing globally for consistency */
+html {
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+.section.teaser {
+    padding-top: 0rem;
+    padding-bottom: 1rem;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.section.teaser h2.subtitle {
+    margin-top: 0;
+    margin-bottom: 0;
+}
