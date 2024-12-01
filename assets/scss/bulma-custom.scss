@@ -2,3 +2,9 @@
 .hero + .section {
     margin-top: -3rem; /* Adjust this value as needed */
 }
+
+/* Add some horizontal spacing to buttons */
+.publication-links .button {
+    margin-right: 5px;
+    margin-left: 5px;
+}
