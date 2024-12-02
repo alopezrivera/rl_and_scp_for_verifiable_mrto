@@ -95,6 +95,8 @@ An optimization framework for the Multi-target Rendezvous problem has been devel
 
 This work is the result of a collaborative effort between the [Delft University of Technology](https://www.tudelft.nl/en/ae) and [SENER Aerospace & Defence](https://www.group.sener/en/markets/aerospace/). We would like to thank Marc Naeije from TU Delft for his endorsement of the project and for his keen supervision and advice. We would like to extend our gratitude to Mercedes Ruiz for making this research possible at Sener Aerospace & Defence. Lastly, we thank UARX Space for entrusting us with OSSIE's maiden flight, the first of many missions to come. Ad astra.
 
+# BibTeX
+
 ```bibtex
 @inproceedings{lopez_rivera_design_2024,
 	title = {Design and {Optimization} of {Multi}-{Rendezvous} {Maneuvres} based on {Reinforcement} {Learning} and {Convex} {Optimization}},
